@@ -1,58 +1,27 @@
-import React, { useState } from "react";
-import {
-  Collapse,
-  Container,
-  Input,
-  InputGroup,
-  InputGroupAddon,
-  InputGroupText,
-  Jumbotron,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import React from "react";
 
 export const Header = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
+  const { search, onInputChange, onSearchClick } = props;
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
   return (
-    <div>
-      <Jumbotron className="Jumbotron">
-        <Container>
-          <h1 className="display-3">Recipe Book App</h1>
-          <InputGroup>
-            <Input placeholder="Search your food here...." />
-            <InputGroupAddon addonType="append">
-              <InputGroupText>Search here</InputGroupText>
-            </InputGroupAddon>
-          </InputGroup>
-          <div>
-            <Navbar color="faded" light>
-              <NavbarBrand href="/" className="mr-auto">
-                reactstrap
-              </NavbarBrand>
-              <NavbarToggler onClick={toggleNavbar} className="mr-2" />
-              <Collapse isOpen={!collapsed} navbar>
-                <Nav navbar>
-                  <NavItem>
-                    <NavLink href="/components/">Components</NavLink>
-                  </NavItem>
-                  <NavItem>
-                    <NavLink href="https://github.com/reactstrap/reactstrap">
-                      GitHub
-                    </NavLink>
-                  </NavItem>
-                </Nav>
-              </Collapse>
-            </Navbar>
-          </div>
-          <hr className="my-2" />
-        </Container>
-      </Jumbotron>
+    <div className="jumbotron">
+      <h1 className="display-1">
+        <i class="material-icons brand-icon">fastfood</i> Recipe Book
+      </h1>
+      <div class="input-group w-50 mx-auto">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search Your Recipe..."
+          value={search}
+          onChange={onInputChange}
+        />
+        <div class="input-group-append">
+          <button className="btn btn-dark" onClick={onSearchClick}>
+            Search Recipe
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
